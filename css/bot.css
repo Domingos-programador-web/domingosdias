@@ -1,0 +1,134 @@
+:root {
+    --bg-body: #0a0a0c;
+    --bg-card: #454545;
+    --accent-color: #00d4ff;
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+    --glass-border: #FFFFFF;
+}
+
+/* Botão Flutuante do Chat */
+#chat-trigger {
+    position: fixed;
+    bottom: 120px;
+    right: 28px;
+    width: 60px;
+    height: 60px;
+    background: #FF7575;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: scale 0.2s;
+    animation: pulseBot 2s infinite;
+}
+
+#chat-trigger:active {
+    scale: 0.9;
+}
+
+/* Janela do ChatBot */
+#chat-window {
+    background: #D2F0FF;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 450px;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    display: none;
+    /* Escondido por padrão */
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    z-index: 3000;
+}
+
+.chat-header {
+    background: var(--accent-color);
+    border-bottom: .5px solid var(--glass-border);
+    padding: 1rem;
+    font-weight: bold;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.msg {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.msg.bot {
+    background: var(--bg-card);
+    color: #fff;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.msg.user {
+    background: var(--accent-color);
+    color: #000;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-input-area {
+    padding: 1rem;
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    gap: 10px;
+}
+input#user-input {
+    flex: 1;
+    background: #FFFFFFCF;
+    border: 1px solid var(--accent-color);
+    padding: 8px;
+    color: black;
+    border-radius: 5px;
+    outline: none;
+}
+code{
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    #chat-window {
+        width: 90%;
+        right: 5%;
+        bottom: 90px;
+    }
+}
+
+@keyframes pulseBot {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 #FF7575;
+    }
+    
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+    
+    100% {
+        transform: scale(1);
+    }
+}

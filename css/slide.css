@@ -1,0 +1,140 @@
+ .testimonial-wrapper {
+     margin: auto;
+     width: 95%;
+     max-width: 800px;
+     /* Limite para Desktop */
+     position: relative;
+     background: var(--bg-color);
+     border-radius: 15px;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+ }
+ 
+ /* --- Trilho dos Slides --- */
+ .slider-track {
+     display: flex;
+     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+ 
+ .slide {
+     min-width: 100%;
+     /* Garante que cada slide ocupe 100% do pai */
+     padding: 60px 40px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+ }
+ 
+ /* --- Imagem e Texto --- */
+ .slide img {
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     object-fit: cover;
+     margin-bottom: 20px;
+     border: 1px solid var(--main-color);
+ }
+ 
+ .content {
+     font-size: 1.1rem;
+     color: var(--main-color);
+     line-height: 1.6;
+     margin-bottom: 15px;
+     max-width: 600px;
+ }
+ 
+ .author {
+     font-weight: bold;
+     color: var(--autor-cor);
+     text-transform: uppercase;
+     letter-spacing: 1px;
+ }
+ 
+ /* --- Navegação (Setas) --- */
+ .nav-btn {
+     background: #FFFFFF1C;
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+     color: #7D2AE878;
+     border: none;
+     width: 45px;
+     height: 45px;
+     border-radius: 50%;
+     cursor: pointer;
+     font-size: 1.5rem;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     transition: all 0.3s ease;
+     z-index: 5;
+ }
+ 
+ .nav-btn:hover {
+     background: #fff;
+     color: var(--main-color);
+ }
+ 
+ .prev {
+     left: 10px;
+ }
+ 
+ .next {
+     right: 10px;
+ }
+ 
+ /* --- Indicadores (Pontos) --- */
+ .indicators {
+     position: absolute;
+     bottom: 20px;
+     left: 50%;
+     transform: translateX(-50%);
+     display: flex;
+     gap: 10px;
+ }
+ 
+ .dot {
+     width: 10px;
+     height: 10px;
+     background: #cbd5e0;
+     border-radius: 50%;
+     cursor: pointer;
+     transition: 0.3s;
+ }
+ 
+ .dot.active {
+     background: #007bff;
+     width: 25px;
+     /* Efeito de pílula no ativo */
+     border-radius: 5px;
+ }
+ 
+ /* --- MEDIA QUERIES (Mobile) --- */
+ @media (max-width: 600px) {
+     .slide {
+         padding: 40px 20px;
+         /* Menos padding no mobile */
+     }
+     
+     .content {
+         font-size: 1rem;
+     }
+     
+     .nav-btn {
+         width: 35px;
+         height: 35px;
+         font-size: 1.2rem;
+         background: #FFFFFF1C;
+         /* Mais visível sobre o fundo */
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     }
+     
+     .prev {
+         left: 5px;
+     }
+     
+     .next {
+         right: 5px;
+     }
+ }
