@@ -18,6 +18,8 @@
     
     
     <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body data-theme="dark">
@@ -81,7 +83,7 @@
                 <a target="_blank"><i class="fas fa-envelope"></i></a>
             </div>
             
-            <a href="assets/file/Biografia.pdf" download class="btn">Download CV</a>
+            <button class="btn" id="installApp"><i class="fas fa-download"></i> Instalar</button>
         </div>
         <div class="home-img">
             <img src="assets/img/criador.jpg" alt="Domingos Dias">
@@ -267,6 +269,47 @@
     <script src="js/bot/bot.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/link.js"></script>
+    
+    <script>
+        let deferredPrompt;
+const installBtn = document.getElementById('installApp');
+
+// 1. Registrar o Service Worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+}
+
+// 2. Capturar o evento de instalação (o navegador avisa que o site pode ser instalado)
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Impede que o banner padrão do navegador apareça
+    e.preventDefault();
+    // Guarda o evento para usar depois
+    deferredPrompt = e;
+    // Mostra o seu botão personalizado
+    installBtn.style.display = 'block';
+});
+
+// 3. Lógica do clique no botão
+installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+        // Mostra o prompt de instalação
+        deferredPrompt.prompt();
+        // Verifica a escolha do usuário
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`Usuário escolheu: ${outcome}`);
+        // Limpa o prompt
+        deferredPrompt = null;
+        // Esconde o botão novamente
+        installBtn.style.display = 'none';
+    }
+});
+
+// 4. Esconder o botão se o app já estiver instalado
+window.addEventListener('appinstalled', () => {
+    installBtn.style.display = 'none';
+    console.log('PWA instalado com sucesso!');
+});
+    </script>
 
 </body>
 
