@@ -13,7 +13,7 @@ const paragrafoBio = document.querySelector('p.pBio')
 
 const verMais = document.createElement('span')
 
-verMais.classList.add('btn')
+verMais.classList.add('btn-ver')
 verMais.textContent = biografia[1].txtBtn
 
 paragrafoBio.innerHTML = textoBio.slice(0, 297)+'...<br/><br/>'
