@@ -2,8 +2,16 @@ const chatWindow = document.getElementById('chat-window');
 const chatTrigger = document.getElementById('chat-trigger');
 const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
+const be = document.querySelector('div.before')
+const perguntas = document.querySelectorAll('button.per')
 
 
+perguntas.forEach((pergunta)=>{
+  pergunta.addEventListener('click',function(){
+      console.log(this.innerHTML)
+      userInput.value = this.innerHTML
+  })
+})
 
 // Abre/Fecha o chat
 function toggleChat() {
@@ -35,8 +43,8 @@ function appendMessage(text, side) {
   const div = document.createElement('div');
   div.className = `msg ${side}`;
   div.innerHTML = text;
-  chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  chatMessages.insertBefore(div,be);
+  //chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 function botResponse(query) {

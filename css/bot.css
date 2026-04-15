@@ -30,6 +30,22 @@
     scale: 0.9;
 }
 
+.perguntas {
+    display: flex;
+    justify-content: space-evenly;
+}
+.perguntas .per{
+    background: var(--accent-color);
+    color: #fff;
+    padding: 6px;
+    text-align: left;
+    font-size: 14pt;
+    margin-right: 4px;
+    width: 170px;
+    height: 140px;
+    border-radius: 1rem;
+}
+
 /* Janela do ChatBot */
 #chat-window {
     background: #D2F0FF;
