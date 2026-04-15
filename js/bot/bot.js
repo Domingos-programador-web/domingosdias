@@ -41,17 +41,7 @@ function appendMessage(text, side) {
 
 function botResponse(query) {
   
-  const respostasAlternativas = [
-      `Comando <code>'${query}'</code> não reconhecido no banco de dados principal. <code>Domingos Dias</code> ainda está expandindo meus módulos de linguagem.`,
-
-      'Não encontrei uma resposta para sua pergunta. A minha base de conhecimento, ainda é muito limitada',
-
-      '<code>Erro no servidor ❌</code>.\n\n😅 Estou a brincar não sei a resposta para a sua pergunta, sou um pouco carneiro.😁'
-    ]
-    
-    const resAlt = Math.floor(Math.random() * respostasAlternativas.length)
-    
-  let response = respostasAlternativas[resAlt];
+  let response = `Eu só posso responder questões sobre o Domingos e seus projectos. Acesse ao site da Google se quiser saber sobre algo. <a href='https://google.com' class='googleLink' target='_blank'> click aqui para acessar a google</a>.`;
   
   for (let item of knowledgeBase) {
   if (item.keys.some(key => query.includes(key))) {

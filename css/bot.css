@@ -100,12 +100,15 @@ input#user-input {
     border: 1px solid var(--accent-color);
     padding: 8px;
     color: black;
-    border-radius: 5px;
+    border-radius: 2rem;
     outline: none;
 }
 code{
   font-style: italic;
   color: var(--accent-color);
+}
+.googleLink{
+    color: #82E7FF;
 }
 
 /* Responsividade */
