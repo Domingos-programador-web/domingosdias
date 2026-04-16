@@ -82,5 +82,7 @@ const knowledgeBase = [
         { keys: ["como contacto - lo"], response: `Vc pode contactá-lo a partir das seguintes formas:<br/>
         1.WhatsApp:<code> 938858659</code>.<br/>
         2.Instagram:<code> _domingos_dias</code>.<br/>
-        3.LinkEnd:<code> Domingos Dias dos Santos</code>.` }
+        3.LinkEnd:<code> Domingos Dias dos Santos</code>.` },
+        
+        { keys: ["ola","olá","bom dia","boa tarde","boa noite","como está"], response: `Olá tudo bem? Em que posso ser útil?` }
 ]
