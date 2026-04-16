@@ -1,5 +1,5 @@
-const knowledgeBase = [
-      { keys: ["quem é domingos dias", "quem te criou", "quem é seu criador", "autor", "quem é Domingos"], response: "Fui concebido pelo mentor <code>Domingos Dias</code>. Ele é um desenvolvedor/programador focado em soluções inteligentes e interfaces de alta performance." },
+/*const knowledgeBase = [
+      { keys: ["quem é domingos", "quem te criou", "quem é seu criador", "autor", "quem é Domingos"], response: "Fui concebido pelo mentor <code>Domingos Dias</code>. Ele é um desenvolvedor/programador focado em soluções inteligentes e interfaces de alta performance." },
       
       { keys: ["domingos dias", "domingos", "domingos dias dos santos antonio"], response: "<code>Esse nome</code>, é parecido com o nome do meu criador <code>Domingos Dias</code>, um excelente <b>Progrador/Desenvolvedor</b>" },
       
@@ -52,4 +52,35 @@ const knowledgeBase = [
       
 
       { keys: ["skill", "skills", "habilidades"], response: `As Skills Tech de Domingos Dias estam espelhadas neste portfólio. Dê uma olhada.` }
-];
+];*/
+
+const knowledgeBase = [
+       {keys: ["quem é domingos", "sobre o domingos"], response: "Domingos Dias dos Santos António, é um desenvolvedor <code>Full-Stack</code>. Trabalha com programação e desenvolvimento web." },
+      
+      { keys: ["quais são suas stack", "skills"], response: `Domingos Dias tem várias <code> Skills tech</code>. Dentre elas posso citar: <br/>
+                  <code>1.React js</code> <br/>
+                  <code>2.javascript</code> <br/>
+                  <code>3.SQL </code> <br/>
+                  <code>4.nodeJs </code><br/>
+                  
+                  As outras Skills estão espelhadas neste portfólio.
+                  `
+      },
+      
+      { keys: ["quais as suas experiências profissionais", "experiência profissional"], response: "Domingos trabalhou como desenvolvedor front end na start Up <code>N'gola tech</code> durante 2 anos. <br/> Trabalhou como Help desk e engenheiro de software, no atelier de beleza <code>Alzira Cabral</code>. Participou de feiras tecnológicas como Expesitor de projectos." },
+      
+      // PROGRAMAÇÃO & TECH
+      { keys: ["quais serviços, domingos faz"], response: `Os serviços que Domingos oferece sao: <br/>
+        1.<code>Web development</code>: construção de plataformas web.<br/>
+        2.<code>Análise de sistemas</code>: Análise de performance de algoritmos.<br/>
+        3.<code>E-commerce</code>: Desenvolvimento de marketplace. ` },
+        
+        { keys: ["quantos projectos estam no mercado"], response: `Domingos tem 9+ 💯 projectos no mercado.<br/>
+          Os mais recentes são Katiana codex e o mundo Trad. Pode visita - los a partir deste portfólio.
+          ` },
+        
+        { keys: ["como contacto - lo"], response: `Vc pode contactá-lo a partir das seguintes formas:<br/>
+        1.WhatsApp:<code> 938858659</code>.<br/>
+        2.Instagram:<code> _domingos_dias</code>.<br/>
+        3.LinkEnd:<code> Domingos Dias dos Santos</code>.` }
+]

@@ -44,7 +44,7 @@ function appendMessage(text, side) {
   div.className = `msg ${side}`;
   div.innerHTML = text;
   chatMessages.insertBefore(div, be);
-  //chatMessages.scrollTop = chatMessages.scrollHeight;
+  chatMessages.scrollTop = perguntas[0].scrollHeight;
 }
 
 function botResponse(query) {
