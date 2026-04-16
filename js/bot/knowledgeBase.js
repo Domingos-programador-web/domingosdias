@@ -52,5 +52,4 @@ const knowledgeBase = [
       
 
       { keys: ["skill", "skills", "habilidades"], response: `As Skills Tech de Domingos Dias estam espelhadas neste portfólio. Dê uma olhada.` }
-      
 ];

@@ -126,7 +126,10 @@ code{
 .googleLink{
     color: #82E7FF;
 }
-
+#chat-trigger{
+    font-size: 15pt;
+    color: #fff;
+}
 /* Responsividade */
 @media (max-width: 480px) {
     #chat-window {
