@@ -15,7 +15,7 @@ const links = [
     id :3,
     rede: 'github',
     desc: 'link que desvia para minha página do GitHub',
-    link: `https://github.com/Domingos-programador-web`
+    link: `https://www.linkedin.com/in/domingos-dias-dos-santos-378630331?utm_source=share_via&utm_content=profile&utm_medium=member_android`
   }, 
   {
     id :4,
