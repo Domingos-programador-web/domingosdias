@@ -1,3 +1,5 @@
+// Arrays de objectos contendo os links para as redes sociais, [clean Code]
+
 const links = [
   {
     id :1,
@@ -13,8 +15,8 @@ const links = [
   }, 
   {
     id :3,
-    rede: 'github',
-    desc: 'link que desvia para minha página do GitHub',
+    rede: 'linkedin',
+    desc: 'link que desvia para minha página do LinkedIn',
     link: `https://www.linkedin.com/in/domingos-dias-dos-santos-378630331?utm_source=share_via&utm_content=profile&utm_medium=member_android`
   }, 
   {
@@ -31,17 +33,20 @@ const links = [
   }
 ]
 
-let redes = document.querySelectorAll('.social-media a')
 
+// Fazendo referência dos links de redes socias da pagina 
+let redes = document.querySelectorAll('.social-media a')
 let whatsapp = document.querySelector('.wa-link')
+
+// Adicionando as reses no seus respectivos nomes 
 let facebook = redes[0]
 let instagram = redes[1]
-let github = redes[2]
+let linkedin = redes[2]
 let email = redes[3]
 
+// Alterando de forma dinâmica os hiperlinks references [href], das reses sociais da página 
 facebook.setAttribute('href',`${links[0].link}`)
 instagram.setAttribute('href',`${links[1].link}`)
-github.setAttribute('href',`${links[2].link}`)
+linkedin.setAttribute('href',`${links[2].link}`)
 email.setAttribute('href',`${links[3].link}`)
 whatsapp.setAttribute('href',`${links[4].link}`)
-
