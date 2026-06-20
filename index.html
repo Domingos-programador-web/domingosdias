@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="manifest.json">
 </head>
+
 <body data-theme="dark">
     
     <!--Link para o WhatsApp-->
@@ -253,20 +254,30 @@
     
     <section class="contact" id="contact">
         <h2 class="heading">Entre em <span>Contato!</span></h2>
-        <form>
+        
+        <form id="landingForm" onsubmit="enviarMailtoGarantido(event)">
+            
             <div class="input-box">
-                <input type="text" placeholder="Nome Completo">
-                <input type="email" placeholder="Endereço de Email">
+                
+                <input type="text" placeholder="Nome Completo" id="nome" required>
+                
+                <input type="email" placeholder="Endereço de Email" id="email" required>
             </div>
             <div class="input-box">
-                <input type="number" placeholder="Telemóvel">
-                <input type="text" placeholder="Assunto">
+                <input type="number" placeholder="Telemóvel" id="telefone" required>
+                
+                <input type="text" placeholder="Assunto" id="assunto" required>
             </div>
-            <textarea cols="30" rows="10" placeholder="Sua Mensagem"></textarea>
-            <button class="btn">Enviar mensagem</button>
+            
+            <div class="form-group">
+                
+                <textarea id="mensagem" cols="30" rows="10" placeholder="Sua Mensagem" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn" id="btn-enviar">Enviar Mensagem</button>
         </form>
+        
     </section>
-    
     <footer class="footer">
         <div class="qr">
             <img src="assets/img/qrWhatsapp.png" alt="qr code WhatsApp" />
@@ -281,13 +292,18 @@
             <a href="#home"><i class="fas fa-arrow-up"></i></a>
         </div>
     </footer>
-
+    
+    <script>
+    
+    </script>
+    
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="js/bot/knowledgeBase.js" defer></script>
     <script src="js/slide.js"></script>
     <script src="js/bot/bot.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/link.js"></script>
+    <script src="js/enviarMensagemNoEmail.js"></script>
 </body>
 
 </html>
