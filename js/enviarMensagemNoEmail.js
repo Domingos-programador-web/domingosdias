@@ -3,7 +3,7 @@ function enviarMailtoGarantido(event) {
   event.preventDefault();
   
   // Meu email padrão 
-  const EMAIL = "domingosdias100@gmail.com"
+  const EMAIL = "domingosdias1010@gmail.com"
   
   // Nome do usuário 
   const nome = document.getElementById('nome').value;
@@ -15,7 +15,7 @@ function enviarMailtoGarantido(event) {
   const telefone = document.getElementById('telefone').value;
   
   // Mensagem do usuário 
-  let mensagem = document.getElementById('mensagem').value;
+  const mensagem = document.getElementById('mensagem').value;
   
   // Assunto do e-mail
   const assunto = encodeURIComponent(document.getElementById('assunto').value);
