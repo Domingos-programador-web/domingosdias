@@ -1,3 +1,4 @@
+// pegar os elementos do html
 const chatWindow = document.getElementById('chat-window');
 const chatTrigger = document.getElementById('chat-trigger');
 const chatMessages = document.getElementById('chat-messages');
@@ -6,12 +7,21 @@ const be = document.querySelector('div.before')
 const perguntas = document.querySelectorAll('button.per')
 
 
+// adiciona o click em todas as perguntas em forma de loop
 perguntas.forEach((pergunta) => {
   pergunta.addEventListener('click', function() {
-      userInput.value = ""
-      userInput.value = this.innerHTML
+    
+    // chamada da função, quando o user clica em uma pergunta
+    addContNoInput(this)
   })
 })
+
+
+// Função que adiciona a pergunta no input
+function addContNoInput(box) {
+  userInput.value = ""
+  userInput.value = box.innerHTML
+}
 
 // Abre/Fecha o chat
 function toggleChat() {
@@ -36,8 +46,6 @@ function sendMessage() {
     botResponse(text.toLowerCase());
   }, 600);
 }
-
-
 
 function appendMessage(text, side) {
   const div = document.createElement('div');
