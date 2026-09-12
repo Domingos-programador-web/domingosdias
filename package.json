@@ -1,7 +1,0 @@
-{
-  "name": "portfolio-domingos",
-  "version": "1.0.0",
-  "dependencies": {
-    "groq-sdk": "^0.7.0"
-  }
-}

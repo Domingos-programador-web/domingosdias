@@ -1,4 +1,4 @@
-/*// pegar os elementos do html
+// pegar os elementos do html
 const chatWindow = document.getElementById('chat-window');
 const chatTrigger = document.getElementById('chat-trigger');
 const chatMessages = document.getElementById('chat-messages');
@@ -73,39 +73,3 @@ function botResponse(query) {
 userInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") sendMessage();
 });
-*/
-
-async function obterRespostaDaGroq(query) {
-  try {
-    const respostaServidor = await fetch('/api/chat', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ message: query })
-    });
-    
-    // Lê a resposta como texto primeiro para evitar erros se o servidor falhar
-    const textoResposta = await respostaServidor.text();
-    
-    let dados;
-    try {
-      dados = JSON.parse(textoResposta);
-    } catch (e) {
-      // Se não for JSON (ex: página 404 da Vercel em HTML), mostra um erro amigável
-      console.error("Resposta não JSON do servidor:", textoResposta);
-      appendMessage("Erro: O servidor da API não foi encontrado (404). Verifica se a pasta 'api/chat.js' está na raiz do projeto e se fizeste o push para a Vercel.", 'bot');
-      return;
-    }
-    
-    if (respostaServidor.ok) {
-      appendMessage(dados.reply, 'bot');
-    } else {
-      appendMessage(`Erro: ${dados.error || 'Não foi possível obter resposta.'}`, 'bot');
-    }
-    
-  } catch (erro) {
-    console.error("Erro na requisição:", erro);
-    appendMessage("Desculpa, ocorreu um erro de conexão com o assistente.", 'bot');
-  }
-}
