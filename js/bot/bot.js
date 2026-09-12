@@ -75,66 +75,8 @@ userInput.addEventListener("keypress", (e) => {
 });
 */
 
-// Pegar os elementos do HTML
-const chatWindow = document.getElementById('chat-window');
-const chatTrigger = document.getElementById('chat-trigger');
-const chatMessages = document.getElementById('chat-messages');
-const userInput = document.getElementById('user-input');
-const be = document.querySelector('div.before')
-const perguntas = document.querySelectorAll('button.per')
-
-
-// Adiciona o click em todas as perguntas em forma de loop
-perguntas.forEach((pergunta) => {
-  pergunta.addEventListener('click', function() {
-    // Chamada da função, quando o user clica em uma pergunta
-    addContNoInput(this)
-  })
-})
-
-
-// Função que adiciona a pergunta no input
-function addContNoInput(box) {
-  userInput.value = ""
-  userInput.value = box.innerHTML
-}
-
-// Abre/Fecha o chat
-function toggleChat() {
-  const isVisible = chatWindow.style.display === 'flex';
-  chatWindow.style.display = isVisible ? 'none' : 'flex';
-}
-
-chatTrigger.addEventListener('click', toggleChat);
-
-// Lógica de envio de mensagem modificada para chamar a Groq
-function sendMessage() {
-  const text = userInput.value.trim();
-  if (text === "") return;
-  
-  // Adiciona a mensagem do usuário no chat
-  appendMessage(text, 'user');
-  userInput.value = "";
-  
-  // Mostra um indicador de carregamento opcional (ou aguarda a resposta)
-  // Chama a função assíncrona que fala com a API da Groq na Vercel
-  obterRespostaDaGroq(text);
-}
-
-function appendMessage(text, side) {
-  const div = document.createElement('div');
-  div.className = `msg ${side}`;
-  div.innerHTML = text;
-  chatMessages.insertBefore(div, be);
-  chatMessages.scrollTop = chatMessages.scrollHeight; // Corrigido para rolar o container de mensagens corretamente
-}
-
-// Nova função que comunica com a Serverless Function da Vercel (Groq)
 async function obterRespostaDaGroq(query) {
   try {
-    // Exibe opcionalmente uma mensagem de "A pensar..."
-    // (Opcional, podes criar um elemento temporário se quiseres)
-    
     const respostaServidor = await fetch('/api/chat', {
       method: 'POST',
       headers: {
@@ -143,10 +85,20 @@ async function obterRespostaDaGroq(query) {
       body: JSON.stringify({ message: query })
     });
     
-    const dados = await respostaServidor.json();
+    // Lê a resposta como texto primeiro para evitar erros se o servidor falhar
+    const textoResposta = await respostaServidor.text();
+    
+    let dados;
+    try {
+      dados = JSON.parse(textoResposta);
+    } catch (e) {
+      // Se não for JSON (ex: página 404 da Vercel em HTML), mostra um erro amigável
+      console.error("Resposta não JSON do servidor:", textoResposta);
+      appendMessage("Erro: O servidor da API não foi encontrado (404). Verifica se a pasta 'api/chat.js' está na raiz do projeto e se fizeste o push para a Vercel.", 'bot');
+      return;
+    }
     
     if (respostaServidor.ok) {
-      // Adiciona a resposta real gerada pela IA da Groq
       appendMessage(dados.reply, 'bot');
     } else {
       appendMessage(`Erro: ${dados.error || 'Não foi possível obter resposta.'}`, 'bot');
@@ -157,9 +109,3 @@ async function obterRespostaDaGroq(query) {
     appendMessage("Desculpa, ocorreu um erro de conexão com o assistente.", 'bot');
   }
 }
-
-// Enviar com a tecla Enter
-userInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") sendMessage();
-});
-
