@@ -3,32 +3,13 @@ const chatWindow = document.getElementById('chat-window');
 const chatTrigger = document.getElementById('chat-trigger');
 const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
-const be = document.querySelector('div.before')
-const perguntas = document.querySelectorAll('button.per')
 
-
-// adiciona o click em todas as perguntas em forma de loop
-perguntas.forEach((pergunta) => {
-  pergunta.addEventListener('click', function() {
-    
-    // chamada da função, quando o user clica em uma pergunta
-    addContNoInput(this)
-  })
-})
-
-
-// Função que adiciona a pergunta no input
-function addContNoInput(box) {
-  userInput.value = ""
-  userInput.value = box.innerHTML
-}
 
 // Abre/Fecha o chat
 function toggleChat() {
   const isVisible = chatWindow.style.display === 'flex';
   chatWindow.style.display = isVisible ? 'none' : 'flex';
 }
-
 
 chatTrigger.addEventListener('click', toggleChat);
 
@@ -51,19 +32,18 @@ function appendMessage(text, side) {
   const div = document.createElement('div');
   div.className = `msg ${side}`;
   div.innerHTML = text;
-  chatMessages.insertBefore(div, be);
-  chatMessages.scrollTop = perguntas[0].scrollHeight;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-function botResponse(query) {
-  
-  let response = `Eu só posso responder questões sobre o Domingos e seus projectos. Acesse ao site da Google se quiser saber sobre algo. <a href='https://google.com' class='googleLink' target='_blank'> click aqui para acessar a google</a>.`;
-  
-  for (let item of knowledgeBase) {
-    if (item.keys.some(key => query.includes(key))) {
-      response = item.response;
+async function botResponse(query) {
+  const response = await enviarMensagemParaBot(
+    {
+      role: "user",
+      content: query
     }
-  }
+  )
+  
   appendMessage(response, 'bot');
 }
 
